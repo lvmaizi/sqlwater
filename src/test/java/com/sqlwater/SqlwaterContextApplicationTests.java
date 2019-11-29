@@ -1,4 +1,4 @@
-package com.sqlwater.sqlwatercontext;
+package com.sqlwater;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
