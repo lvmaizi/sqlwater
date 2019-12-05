@@ -5,4 +5,5 @@ package com.sqlwater.context;
  * @Version 1.0
  */
 public interface Column {
+
 }

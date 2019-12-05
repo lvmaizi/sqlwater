@@ -1,16 +1,25 @@
 package com.sqlwater.web;
 
+//import com.sqlwater.context.Model.User;
+import com.sqlwater.service.ServiceTest;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
 
 /**
  * @Date 2019/11/29 17:53
  * @Version 1.0
  */
+@RestController
 public class webTest {
-    @RequestMapping("test")
-    @ResponseBody
+
+    @Autowired
+    public ServiceTest serviceTest;
+    @RequestMapping("/test")
     public String test() {
+        //List<User> list = serviceTest.select();
         return "my first test";
     }
 }
