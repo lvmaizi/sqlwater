@@ -30,6 +30,8 @@ public class MysqlApplication implements SqlApplication {
         if (sqlDataSource.testConnect()==false) {
             throw new ServiceException("数据库连接失败，请检查输入");
         }
+        //初始化数据库
+
 //        //逆向工程
 //        SqlAutoGenerate sqlAutoGenerate = SqlApplicationFactory.getSystemSqlAutoGenerate();
 //        sqlAutoGenerate.generateSqlContext(sqlDataSource.getDataSource());

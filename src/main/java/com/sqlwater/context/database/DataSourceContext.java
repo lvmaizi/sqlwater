@@ -17,4 +17,10 @@ public class DataSourceContext {
     }
     public Map<HttpSession,SqlDataSource> dataSourceContext = new HashMap<HttpSession,SqlDataSource>();
     public ThreadLocal<SqlDataSource> currentDataSource = new ThreadLocal<SqlDataSource>();
+
+    public void init(){
+
+    }
+
+
 }
