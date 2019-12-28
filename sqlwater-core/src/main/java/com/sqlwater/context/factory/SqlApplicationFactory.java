@@ -1,11 +1,13 @@
 package com.sqlwater.context.factory;
 
+import com.sqlwater.context.Database;
 import com.sqlwater.context.SqlApplication;
 import com.sqlwater.context.SqlAutoGenerate;
 import com.sqlwater.context.database.DruidSqlDataSource;
 import com.sqlwater.context.database.SqlDataSource;
 import com.sqlwater.context.imp.MysqlApplication;
 import com.sqlwater.context.mybatis.MybatisAdverseGenerate;
+import com.sqlwater.context.mysql.MysqlDatabase;
 
 /**
  * @Date 2019/12/3 18:35
@@ -40,5 +42,9 @@ public class SqlApplicationFactory {
     public static SqlAutoGenerate getSystemSqlAutoGenerate(){
         //TODO
         return new MybatisAdverseGenerate();
+    }
+    public static Database getSystemDatabase(){
+        //TODO
+        return new MysqlDatabase();
     }
 }

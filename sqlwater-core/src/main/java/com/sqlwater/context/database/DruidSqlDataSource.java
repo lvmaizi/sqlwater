@@ -1,6 +1,8 @@
 package com.sqlwater.context.database;
 
 import com.alibaba.druid.pool.DruidDataSource;
+import lombok.Getter;
+import lombok.Setter;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
@@ -10,12 +12,14 @@ import java.sql.SQLException;
  * @Date 2019/12/3 19:40
  * @Version 1.0
  */
+
 public class DruidSqlDataSource implements SqlDataSource {
     public String url;
     public String driver = "com.mysql.jdbc.Driver";
     public String userName;
     public String password;
     public DataSource dataSource;
+    public String databaseName;
 
     @Override
     public void init(){
@@ -101,4 +105,11 @@ public class DruidSqlDataSource implements SqlDataSource {
     public void setDataSource(DataSource dataSource) {
         this.dataSource = dataSource;
     }
+
+    @Override
+    public String getDatabaseName() { return databaseName; }
+
+    @Override
+    public void setDatabaseName(String databaseName) { this.databaseName = databaseName; }
+
 }
