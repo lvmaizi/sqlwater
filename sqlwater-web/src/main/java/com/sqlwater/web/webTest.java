@@ -1,8 +1,6 @@
 package com.sqlwater.web;
 
-//import com.sqlwater.context.Model.User;
 import com.sqlwater.service.ServiceTest;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -15,8 +13,8 @@ import java.util.List;
 @RestController
 public class webTest {
 
-    @Autowired
-    public ServiceTest serviceTest;
+    private ServiceTest serviceTest;
+
     @RequestMapping("/test")
     public String test() {
         //List<User> list = serviceTest.select();

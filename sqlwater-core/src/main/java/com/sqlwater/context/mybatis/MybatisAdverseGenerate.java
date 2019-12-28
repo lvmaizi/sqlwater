@@ -27,7 +27,7 @@ public class MybatisAdverseGenerate implements SqlAutoGenerate {
             boolean overwrite = true;
             // 指定配置文件
             System.out.println(System.getProperty("user.dir"));
-            File configFile = new File(this.getClass().getResource("/").getPath()+"./generatorConfig.xml");
+            File configFile = new File(this.getClass().getResource("/").getPath()+ "src/main/resources/generatorConfig.xml");
             ConfigurationParser cp = new ConfigurationParser(warnings);
             Configuration config = cp.parseConfiguration(configFile);
             DefaultShellCallback callback = new DefaultShellCallback(overwrite);

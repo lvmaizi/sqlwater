@@ -7,5 +7,5 @@ import java.sql.Connection;
  * @Version 1.0
  */
 public interface SqlApplication {
-    public void init(String url,String userName,String password);
+    public void init(String url, String userName, String password);
 }

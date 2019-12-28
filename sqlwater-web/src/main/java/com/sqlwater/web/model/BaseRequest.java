@@ -1,4 +1,4 @@
-package com.sqlwater.web.Model;
+package com.sqlwater.web.model;
 
 /**
  * @Date 2019/12/3 19:59

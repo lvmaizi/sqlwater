@@ -1,6 +1,7 @@
 package com.sqlwater.context.mysql.mapper;
 
 import com.sqlwater.context.Table;
+import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
 

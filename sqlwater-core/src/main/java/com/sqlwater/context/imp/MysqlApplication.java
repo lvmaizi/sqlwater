@@ -1,10 +1,13 @@
 package com.sqlwater.context.imp;
 
+import com.sqlwater.context.Database;
 import com.sqlwater.context.Exception.ServiceException;
 import com.sqlwater.context.SqlApplication;
 import com.sqlwater.context.SqlAutoGenerate;
+import com.sqlwater.context.cache.SqlBaseDataContent;
 import com.sqlwater.context.database.SqlDataSource;
 import com.sqlwater.context.factory.SqlApplicationFactory;
+import com.sqlwater.context.mysql.MysqlDatabase;
 import com.sqlwater.core.Constant;
 import com.sqlwater.util.DynamicCompileUtil;
 import com.sqlwater.util.PackageUtil;
@@ -30,6 +33,9 @@ public class MysqlApplication implements SqlApplication {
         if (sqlDataSource.testConnect()==false) {
             throw new ServiceException("数据库连接失败，请检查输入");
         }
+        //初始化基础表
+        SqlBaseDataContent sqlBaseDataContent = SqlBaseDataContent.getInstance();
+        sqlBaseDataContent.put(sqlDataSource,getDatabaseByDataSources(sqlDataSource));
 //        //逆向工程
 //        SqlAutoGenerate sqlAutoGenerate = SqlApplicationFactory.getSystemSqlAutoGenerate();
 //        sqlAutoGenerate.generateSqlContext(sqlDataSource.getDataSource());
@@ -44,5 +50,13 @@ public class MysqlApplication implements SqlApplication {
 //
 //        }
 //        DynamicCompileUtil.singleCompile(classPath+ Constant.FILE_SEPARATOR + "UserMapper.java");
+    }
+
+    /**
+     * 根据SqlDataSources 初始化数据库基础数据
+     */
+    public Database getDatabaseByDataSources(SqlDataSource sqlDataSource) {
+        Database database = new MysqlDatabase();
+        return database;
     }
 }
