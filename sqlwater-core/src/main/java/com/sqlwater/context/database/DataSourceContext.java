@@ -1,6 +1,6 @@
 package com.sqlwater.context.database;
 
-import javax.servlet.http.HttpSession;
+//import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -15,7 +15,7 @@ public class DataSourceContext {
     public static DataSourceContext getInstance(){
         return SingletonInner.dataSourceContext;
     }
-    public Map<HttpSession,SqlDataSource> dataSourceContext = new HashMap<HttpSession,SqlDataSource>();
+//    public Map<HttpSession,SqlDataSource> dataSourceContext = new HashMap<HttpSession,SqlDataSource>();
     public ThreadLocal<SqlDataSource> currentDataSource = new ThreadLocal<SqlDataSource>();
 
     public void init(){

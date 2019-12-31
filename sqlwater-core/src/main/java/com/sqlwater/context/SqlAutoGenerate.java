@@ -1,7 +1,5 @@
 package com.sqlwater.context;
 
-import org.mybatis.generator.exception.InvalidConfigurationException;
-import org.mybatis.generator.exception.XMLParserException;
 
 import javax.sql.DataSource;
 import java.io.IOException;

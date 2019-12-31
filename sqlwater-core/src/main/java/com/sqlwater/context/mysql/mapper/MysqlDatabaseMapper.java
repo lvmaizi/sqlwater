@@ -1,6 +1,7 @@
 package com.sqlwater.context.mysql.mapper;
 
 import com.sqlwater.context.Table;
+import com.sqlwater.context.mysql.MysqlTable;
 import org.apache.ibatis.annotations.Mapper;
 
 import java.util.List;
@@ -10,5 +11,5 @@ import java.util.List;
  * @Version 1.0
  */
 public interface MysqlDatabaseMapper {
-    public List<Table> selectAll(String dataBaseName);
+    public List<MysqlTable> selectAll(String dataBaseName);
 }

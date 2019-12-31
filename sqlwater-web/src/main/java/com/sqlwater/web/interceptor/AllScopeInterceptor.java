@@ -30,11 +30,11 @@ public class AllScopeInterceptor implements HandlerInterceptor {
     }
     public void setCurrentDataSource(HttpSession httpSession){
         DataSourceContext dataSourceContext = DataSourceContext.getInstance();
-        SqlDataSource sqlDataSource = dataSourceContext.dataSourceContext.get(httpSession);
-        if (sqlDataSource == null){
-            //TODO
-        }else {
-            dataSourceContext.currentDataSource.set(sqlDataSource);
-        }
+//        SqlDataSource sqlDataSource = dataSourceContext.dataSourceContext.get(httpSession);
+//        if (sqlDataSource == null){
+//            //TODO
+//        }else {
+//            dataSourceContext.currentDataSource.set(sqlDataSource);
+//        }
     }
 }

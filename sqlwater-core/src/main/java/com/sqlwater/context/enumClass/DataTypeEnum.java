@@ -1,7 +1,5 @@
 package com.sqlwater.context.enumClass;
 
-import lombok.Getter;
-import lombok.Setter;
 
 /**
  * @Date 2019/11/29 17:33

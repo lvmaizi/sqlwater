@@ -3,8 +3,6 @@ package com.sqlwater.context.mysql;
 import com.sqlwater.context.Database;
 import com.sqlwater.context.Table;
 import com.sqlwater.context.database.SqlDataSource;
-import com.sqlwater.context.mysql.mapper.MysqlDatabaseMapper;
-import com.sqlwater.context.mysql.mapper.MysqlTableMapper;
 import lombok.Getter;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,11 +21,6 @@ public class MysqlDatabase implements Database {
     @Autowired
     private SqlDataSource sqlDataSource;
 
-    @Autowired
-    private MysqlDatabaseMapper mysqlDatabaseMapper;
-
-    @Autowired
-    private MysqlTableMapper mysqlTableMapper;
 
     @Override
     public List<Table> getTables() {
@@ -42,9 +35,9 @@ public class MysqlDatabase implements Database {
 
     public void init(){
         //初始化表列表
-        tables = mysqlDatabaseMapper.selectAll(sqlDataSource.getDatabaseName());
-        for (Table table: tables) {
-            table.setColumns(mysqlTableMapper.selectColumnByTable(table.getTableName()));
-        }
+//        tables = mysqlDatabaseMapper.selectAll(sqlDataSource.getDatabaseName());
+//        for (Table table: tables) {
+//            table.setColumns(mysqlTableMapper.selectColumnByTable(table.getTableName()));
+//        }
     }
 }

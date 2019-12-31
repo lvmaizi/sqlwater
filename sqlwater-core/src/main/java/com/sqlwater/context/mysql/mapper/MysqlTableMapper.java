@@ -1,6 +1,7 @@
 package com.sqlwater.context.mysql.mapper;
 
 import com.sqlwater.context.Column;
+import com.sqlwater.context.mysql.MysqlColumn;
 
 import java.util.List;
 
@@ -9,5 +10,5 @@ import java.util.List;
  * @Version 1.0
  */
 public interface MysqlTableMapper {
-    public List<Column> selectColumnByTable(String tableName);
+    public List<MysqlColumn> selectColumnByTable(String tableName);
 }
