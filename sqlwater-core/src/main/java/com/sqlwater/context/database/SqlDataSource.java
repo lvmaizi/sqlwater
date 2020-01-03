@@ -27,8 +27,6 @@ public interface SqlDataSource {
 
     public String getPassword();
 
-    public String getDatabaseName();
-
     public void setUrl(String url);
 
     public void setDriver(String driver);
@@ -39,6 +37,5 @@ public interface SqlDataSource {
 
     public void setDataSource(DataSource dataSource);
 
-    public void setDatabaseName(String databaseName);
 
 }

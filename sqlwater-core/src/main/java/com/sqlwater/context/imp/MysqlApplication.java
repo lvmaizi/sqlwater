@@ -7,10 +7,15 @@ import com.sqlwater.context.SqlAutoGenerate;
 import com.sqlwater.context.cache.SqlBaseDataContent;
 import com.sqlwater.context.database.SqlDataSource;
 import com.sqlwater.context.factory.SqlApplicationFactory;
+import com.sqlwater.context.mysql.MysqlDataCacheService;
 import com.sqlwater.context.mysql.MysqlDatabase;
 import com.sqlwater.core.Constant;
 import com.sqlwater.util.DynamicCompileUtil;
+import com.sqlwater.util.MysqlDefaultParse;
 import com.sqlwater.util.PackageUtil;
+import com.sqlwater.util.UrlParseUtil;
+
+import java.util.List;
 
 /**
  * @Date 2019/11/29 17:21
@@ -56,7 +61,15 @@ public class MysqlApplication implements SqlApplication {
      * 根据SqlDataSources 初始化数据库基础数据
      */
     public Database getDatabaseByDataSources(SqlDataSource sqlDataSource) {
+        //TODO 后续改变，先写死支持mysql
         Database database = new MysqlDatabase();
+        try{
+            MysqlDataCacheService mysqlDataCacheService = new MysqlDataCacheService();
+            List list = mysqlDataCacheService.getTableData(sqlDataSource.getDataSource(), MysqlDefaultParse.getIp(sqlDataSource.getUrl()));
+            database.setTables(list);
+        }catch (Exception e){
+
+        }
         return database;
     }
 }

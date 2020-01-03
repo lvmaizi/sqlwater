@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class LoginController {
     @RequestMapping("/login")
     public Object login(String url,String username,String password){
-        url = "jdbc:mysql://mysql57.rdsmkcc0pkuxka9.rds.su.baidubce.com:3306/fwh";
+        url = "jdbc:mysql://49.234.7.155:3306/fwh";
         username = "root";
         password = "fwh17839936646";
         SqlApplication sqlApplication = SqlApplicationFactory.getSystemSqlApplication();
@@ -23,6 +23,6 @@ public class LoginController {
         }catch (Exception e){
             //TODO
         }
-        return null;
+        return "登录成功";
     }
 }

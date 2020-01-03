@@ -10,5 +10,5 @@ import java.util.List;
  * @Version 1.0
  */
 public interface MysqlTableMapper {
-    public List<MysqlColumn> selectColumnByTable(String tableName);
+    public List<MysqlColumn> selectColumnByTable(String databaseName,String tableName);
 }

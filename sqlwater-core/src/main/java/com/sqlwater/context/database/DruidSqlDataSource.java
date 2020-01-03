@@ -19,7 +19,6 @@ public class DruidSqlDataSource implements SqlDataSource {
     public String userName;
     public String password;
     public DataSource dataSource;
-    public String databaseName;
 
     @Override
     public void init(){
@@ -106,10 +105,6 @@ public class DruidSqlDataSource implements SqlDataSource {
         this.dataSource = dataSource;
     }
 
-    @Override
-    public String getDatabaseName() { return databaseName; }
 
-    @Override
-    public void setDatabaseName(String databaseName) { this.databaseName = databaseName; }
 
 }
