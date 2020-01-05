@@ -4,6 +4,7 @@ import com.sqlwater.context.Database;
 import com.sqlwater.context.Table;
 import com.sqlwater.context.database.SqlDataSource;
 
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -29,6 +30,13 @@ public class SqlBaseDataContent {
      * @param database
      */
     public void put(SqlDataSource sqlDataSource, Database database) {
+        if(databaseMap==null){
+            databaseMap = new HashMap();
+        }
         databaseMap.put(sqlDataSource,database);
+    }
+
+    public Database get(SqlDataSource sqlDataSource){
+        return databaseMap.get(sqlDataSource);
     }
 }

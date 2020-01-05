@@ -29,7 +29,7 @@ public class MysqlApplication implements SqlApplication {
         return SingletonInner.mysqlApplication;
     }
     @Override
-    public void init(String url,String userName,String password){
+    public SqlDataSource init(String url,String userName,String password){
         //创建连接
         SqlDataSource sqlDataSource = SqlApplicationFactory.getSystemDateSource();
         sqlDataSource.setUrl(url);
@@ -55,6 +55,7 @@ public class MysqlApplication implements SqlApplication {
 //
 //        }
 //        DynamicCompileUtil.singleCompile(classPath+ Constant.FILE_SEPARATOR + "UserMapper.java");
+        return sqlDataSource;
     }
 
     /**
@@ -65,7 +66,7 @@ public class MysqlApplication implements SqlApplication {
         Database database = new MysqlDatabase();
         try{
             MysqlDataCacheService mysqlDataCacheService = new MysqlDataCacheService();
-            List list = mysqlDataCacheService.getTableData(sqlDataSource.getDataSource(), MysqlDefaultParse.getIp(sqlDataSource.getUrl()));
+            List list = mysqlDataCacheService.getTableData(sqlDataSource.getDataSource(), MysqlDefaultParse.getDataBaseName(sqlDataSource.getUrl()));
             database.setTables(list);
         }catch (Exception e){
 

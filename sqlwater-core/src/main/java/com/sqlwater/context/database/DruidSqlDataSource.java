@@ -15,7 +15,7 @@ import java.sql.SQLException;
 
 public class DruidSqlDataSource implements SqlDataSource {
     public String url;
-    public String driver = "com.mysql.jdbc.Driver";
+    public String driver = "com.mysql.cj.jdbc.Driver";
     public String userName;
     public String password;
     public DataSource dataSource;

@@ -14,7 +14,7 @@ public class DateBaseTest {
     @Test
     public void createConnection() throws SQLException {
         DruidDataSource dataSource = new DruidDataSource();
-        dataSource.setDriverClassName("com.mysql.jdbc.Driver");
+        dataSource.setDriverClassName("com.mysql.cj.jdbc.Driver");
         dataSource.setUsername("root");
         dataSource.setPassword("fwh17839936646");
         dataSource.setUrl("jdbc:mysql://mysql57.rdsmkcc0pkuxka9.rds.su.baidubce.com:3306/fwh");

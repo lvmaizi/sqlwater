@@ -17,7 +17,7 @@ public class InitTest {
     @RequestMapping("init")
     public String init() {
         try{
-            mysqlDataCacheService.initTableData();
+            //mysqlDataCacheService.initTableData();
         }catch (Exception e){
             e.printStackTrace();
         }

@@ -1,5 +1,7 @@
 package com.sqlwater.context;
 
+import com.sqlwater.context.database.SqlDataSource;
+
 import java.sql.Connection;
 
 /**
@@ -7,5 +9,5 @@ import java.sql.Connection;
  * @Version 1.0
  */
 public interface SqlApplication {
-    public void init(String url, String userName, String password);
+    public SqlDataSource init(String url, String userName, String password);
 }
