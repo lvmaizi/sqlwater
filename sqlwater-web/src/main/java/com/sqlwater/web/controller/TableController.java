@@ -20,8 +20,9 @@ public class TableController {
     /**
      * 根据条件查询表中数据
      */
-    @PostMapping("/table")
+    @GetMapping("/table")
     public void queryTable(){
+        webTableOperation.select();
 
     }
 
