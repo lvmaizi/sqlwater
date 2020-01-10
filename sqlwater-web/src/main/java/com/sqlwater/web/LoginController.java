@@ -4,7 +4,9 @@ import com.sqlwater.context.SqlApplication;
 import com.sqlwater.context.database.SqlDataSource;
 import com.sqlwater.context.factory.SqlApplicationFactory;
 import com.sqlwater.web.interceptor.DataSourceContext;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
@@ -18,6 +20,7 @@ import javax.servlet.http.HttpSession;
  */
 
 @RestController
+@Controller
 public class LoginController {
 //    @PostConstruct
 //    public void init(){login(null,null,null);}
@@ -34,6 +37,6 @@ public class LoginController {
         }catch (Exception e){
             //TODO
         }
-        return "login success";
+        return url;
     }
 }
