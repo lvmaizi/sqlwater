@@ -10,6 +10,9 @@ import org.springframework.stereotype.Service;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.ResultSetMetaData;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -42,7 +45,8 @@ public class TableOperation {
     /**
      * 查询当前表的内容
      */
-    public void select(SqlDataSource sqlDataSource, String tableName, List<Condition> conditions) {
+    public List<Map> select(SqlDataSource sqlDataSource, String tableName, List<Condition> conditions) {
+        List<Map> mapList = new ArrayList<>();
         Database database = SqlBaseDataContent.getInstance().get(sqlDataSource);
         List<Table> tables = database.getTables().stream().filter(e -> e.getTableName().equals(tableName)).collect(Collectors.toList());
         if(tables.size()>0){
@@ -53,14 +57,20 @@ public class TableOperation {
                 Connection connection = sqlDataSource.getConnection();
                 PreparedStatement ps = connection.prepareStatement(sql);
                 resultSet = ps.executeQuery();
+                ResultSetMetaData resultSetMetaData = resultSet.getMetaData();
                 while(resultSet.next()){
                     System.out.println(resultSet.getString(1));
-
+                    Map map = new HashMap();
+                    for (int i=1; i<=resultSetMetaData.getColumnCount(); i++){
+                        map.put(resultSetMetaData.getColumnName(i),resultSet.getString(i));
+                    }
+                    mapList.add(map);
                 }
             }catch (Exception e){
 
             }
         }
+        return mapList;
     }
 
 }

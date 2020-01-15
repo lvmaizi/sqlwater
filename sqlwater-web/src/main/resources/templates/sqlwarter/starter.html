@@ -187,11 +187,10 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <!--                      </div>-->
 <!--                    </div>-->
 <!--                  </div>-->
-
-                  <div class="card-footer">
-                    <button type="submit" class="btn btn-primary">Submit</button>
-                  </div>
                 </form>
+                <div class="card-footer">
+                  <button type="submit" id="submitForm" class="btn btn-primary">提交</button>
+                </div>
                 <h3 class="card-title">DataTable with minimal features & hover style</h3>
               </div>
               <!-- /.card-header -->
@@ -386,19 +385,22 @@ scratch. This page gets rid of all links and provides the needed markup only.
   //初始化查询表单
   function initTableForm(data){
     $("#tableForm").empty()
+    $("#columnNameStart").empty()
+    $("#columnNameEnd").empty()
+    $("#columnBody").empty()
     console.log(data)
     function createNode(data) {
       html = "                  <div class=\"row\">\n" +
               "                    <div class=\"col-sm-4\" style=\"text-align: right\">\n" +
               "                      <div class=\"form-group\">\n" +
-              "                        <input type=\"text\" class=\"form-control\" placeholder=\""+data+"\" disabled>\n" +
+              "                        <input type=\"text\" class=\"form-control\" placeholder=\""+data["comment"]+"\" disabled>\n" +
               "                      </div>\n" +
               "                    </div>\n" +
               "                    <div class=\"col-md-2\">\n" +
               "                      <div class=\"form-group\">\n" +
-              "                        <select class=\"form-control select2\" style=\"width: 100%;\">\n" +
-              "                          <option selected=\"selected\">=</option>\n" +
-              "                          <option>!=</option>\n" +
+              "                        <select class=\"form-control select2\" name='"+data["name"]+"Qualify' style=\"width: 100%;\">\n" +
+              "                          <option value='=' selected=\"selected\">=</option>\n" +
+              "                          <option value='!='>!=</option>\n" +
               "                          <option> > </option>\n" +
               "                          <option> < </option>\n" +
               "                        </select>\n" +
@@ -407,23 +409,73 @@ scratch. This page gets rid of all links and provides the needed markup only.
               "                    </div>\n" +
               "                    <div class=\"col-sm-6\">\n" +
               "                      <div class=\"form-group\">\n" +
-              "                        <input type=\"text\" class=\"form-control\" placeholder=\"Enter ...\" >\n" +
+              "                        <input type=\"text\" class=\"form-control\" name=\""+data["name"]+"\" placeholder=\"Enter ...\" >\n" +
               "                      </div>\n" +
               "                    </div>\n" +
               "                  </div>\n"
       return html;
     }
     function createColumn(data) {
-      var html = ""
+      html = "<th>"+data+"</th>";
+      return html;
+    }
+    function createColumnBody(data) {
+      html = "<tr>\n" +
+              "                    <td>Other browsers</td>\n" +
+              "                    <td>All others</td>\n" +
+              "                    <td>-</td>\n" +
+              "                    <td>-</td>\n" +
+              "                    <td>U</td>\n" +
+              "                  </tr>"
     }
     var columns = data["columns"]
     console.log(columns)
     for(var i=0;i<columns.length;i++){
-      console.log(columns[i]["comment"])
-      $("#tableForm").prepend(createNode(columns[i]["comment"]))
+      console.log(columns[i])
+      $("#tableForm").prepend(createNode(columns[i]))
+      $("#columnNameStart").append(createColumn(columns[i]["comment"]))
+      $("#columnNameEnd").append(createColumn(columns[i]["comment"]))
     }
   }
-
+  //表单提交
+  $("#submitForm").click(function () {
+    var data = getFormEntity()
+    alert(data)
+    $.ajax({
+      type: "GET",
+      url:'http://localhost:8080/table',
+      async:false,
+      data: data,
+      dataType: "json",
+      success: function (data) {
+        alert(JSON.stringify(data))
+        console.log(data)
+        tableResults(data)
+      }
+    })
+  })
+  //结果集填充
+  function tableResults(data) {
+    $("#columnBody").append(createColumnBody(data))
+  }
+  function createColumnBody(data) {
+    html = ""
+    for (var i=0;i<data.length;i++){
+      html += "<tr>\\n"
+      var object = data[i];
+      for (var val in object){
+        html += "<td>"+object[val]+"</td>\n"
+      }
+      html += "</tr>"
+    }
+    return html;
+  }
+  //获取表单json
+  function getFormEntity(){
+    var jsonData = $("#tableForm").serialize();
+    data= decodeURIComponent(jsonData,true);
+    return data;
+  }
 
   $(function () {
     $("#example1").DataTable();

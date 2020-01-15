@@ -6,6 +6,7 @@ import lombok.Setter;
 
 import javax.sql.DataSource;
 import java.sql.Connection;
+import java.sql.DriverManager;
 import java.sql.SQLException;
 
 /**
@@ -40,7 +41,8 @@ public class DruidSqlDataSource implements SqlDataSource {
             init();
         }
         try {
-            dataSource.getConnection();
+            Connection dbConn= DriverManager.getConnection(url,userName,password);
+            //dataSource.getConnection();
         }catch (Exception e){
             return false;
         }

@@ -1,4 +1,4 @@
-package com.sqlwater.web;
+package com.sqlwater.web.controller;
 
 import com.sqlwater.context.mysql.MysqlDataCacheService;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,4 +1,4 @@
-package com.sqlwater.web;
+package com.sqlwater.web.controller;
 
 import org.springframework.web.bind.annotation.RestController;
 

@@ -23,12 +23,14 @@
     <properties>
         <java.version>1.8</java.version>
         <springboot.version>2.2.2.RELEASE</springboot.version>
+        <lombok.version>1.18.2</lombok.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter</artifactId>
+            <version>${springboot.version}</version>
         </dependency>
 
         <dependency>
@@ -41,12 +43,14 @@
                     <artifactId>junit-vintage-engine</artifactId>
                 </exclusion>
             </exclusions>
+            <version>${springboot.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
             <optional>true</optional>
+            <version>${lombok.version}</version>
         </dependency>
     </dependencies>
 

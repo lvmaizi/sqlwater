@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author lvmaizi
@@ -29,7 +30,7 @@ public class WebTableOperation {
     }
     //
 
-    public void select(){
+    public List<Map> select(){
         List<Condition> conditions = new ArrayList<>();
         Condition condition = new Condition();
         condition.setColumnName("name");
@@ -38,6 +39,6 @@ public class WebTableOperation {
         conditions.add(condition);
         //强转
         SqlDataSource sqlDataSource = DataSourceContext.getInstance().currentDataSource.get();
-        tableOperation.select(sqlDataSource,"user",conditions);
+        return tableOperation.select(sqlDataSource,"user",conditions);
     }
 }
