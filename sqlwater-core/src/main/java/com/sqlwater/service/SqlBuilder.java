@@ -63,4 +63,23 @@ public class SqlBuilder {
         }
         return sql.toString();
     }
+
+    public static String buildPageQuerySql(Table table, List<Condition> conditions, int pageNum, int pageSize){
+        StringBuffer sql = new StringBuffer("select ");
+        for (Column column : table.getColumns()) {
+            sql.append(" "+ column.getName() + ",");
+        }
+        sql.deleteCharAt(sql.length()-1);
+        sql.append(" from "+table.getTableName());
+        if(conditions!=null && conditions.size()>0){
+            sql.append(" where ");
+            for(int i=0;i<conditions.size();i++){
+                if(i!=0)sql.append(" and");
+                sql.append(" " + conditions.get(i).columnName +conditions.get(i).getOperation()+"'"+conditions.get(i).getValue()+"'");
+            }
+        }
+        sql.append(" limit "+pageNum+","+pageSize);
+        return sql.toString();
+    }
+
 }

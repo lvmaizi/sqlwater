@@ -111,23 +111,23 @@ scratch. This page gets rid of all links and provides the needed markup only.
             <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
-                表单
+                数据库表
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
             <ul id="tableList" class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="pages/tables/commonSql.html" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>0001</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="#" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>0002</p>
-                </a>
-              </li>
+<!--              <li class="nav-item">-->
+<!--                <a href="pages/tables/commonSql.html" class="nav-link">-->
+<!--                  <i class="far fa-circle nav-icon"></i>-->
+<!--                  <p>0001</p>-->
+<!--                </a>-->
+<!--              </li>-->
+<!--              <li class="nav-item">-->
+<!--                <a href="#" class="nav-link">-->
+<!--                  <i class="far fa-circle nav-icon"></i>-->
+<!--                  <p>0002</p>-->
+<!--                </a>-->
+<!--              </li>-->
             </ul>
           </li>
 
@@ -163,7 +163,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
           <div class="card">
             <div class="card-header">
               <div class="card-body">
-                <form role="form" id="tableForm">
+                <form role="form" id="tableForm" name="">
 <!--                  <div class="row">-->
 <!--                    <div class="col-sm-4" style="text-align: right">-->
 <!--                      <div class="form-group">-->
@@ -206,13 +206,97 @@ scratch. This page gets rid of all links and provides the needed markup only.
                   </tr>
                   </thead>
                   <tbody id="columnBody">
-                  <tr>
-                    <td>Other browsers</td>
-                    <td>All others</td>
-                    <td>-</td>
-                    <td>-</td>
-                    <td>U</td>
-                  </tr>
+<!--                  <tr>-->
+<!--                    <td>Other browsers</td>-->
+<!--                    <td>All others</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>U</td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>Other browsers</td>-->
+<!--                    <td>All others</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>U</td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>Other browsers</td>-->
+<!--                    <td>All others</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>U</td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>Other browsers</td>-->
+<!--                    <td>All others</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>U</td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>Other browsers</td>-->
+<!--                    <td>All others</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>U</td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>Other browsers</td>-->
+<!--                    <td>All others</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>U</td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>Other browsers</td>-->
+<!--                    <td>All others</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>U</td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>Other browsers</td>-->
+<!--                    <td>All others</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>U</td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>Other browsers</td>-->
+<!--                    <td>All others</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>U</td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>Other browsers</td>-->
+<!--                    <td>All others</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>U</td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>Other browsers</td>-->
+<!--                    <td>All others</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>U</td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>Other browsers</td>-->
+<!--                    <td>All others</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>U</td>-->
+<!--                  </tr>-->
+<!--                  <tr>-->
+<!--                    <td>Other browsers</td>-->
+<!--                    <td>All others</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>-</td>-->
+<!--                    <td>U</td>-->
+<!--                  </tr>-->
                   </tbody>
                   <tfoot>
                   <tr id="columnNameEnd">
@@ -365,6 +449,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
         console.log(res[i]["tableName"])
         $("#tableList").append(createNode(res[i]))
       }
+      //$($("#tableList").children("li").get(0)).click()
   }
   })
 
@@ -388,12 +473,13 @@ scratch. This page gets rid of all links and provides the needed markup only.
     $("#columnNameStart").empty()
     $("#columnNameEnd").empty()
     $("#columnBody").empty()
+    $("#tableForm").attr("name",data["tableName"])
     console.log(data)
     function createNode(data) {
       html = "                  <div class=\"row\">\n" +
               "                    <div class=\"col-sm-4\" style=\"text-align: right\">\n" +
               "                      <div class=\"form-group\">\n" +
-              "                        <input type=\"text\" class=\"form-control\" placeholder=\""+data["comment"]+"\" disabled>\n" +
+              "                        <input type=\"text\" class=\"form-control\" placeholder=\""+data["name"]+"-"+data["comment"]+"\" disabled>\n" +
               "                      </div>\n" +
               "                    </div>\n" +
               "                    <div class=\"col-md-2\">\n" +
@@ -416,7 +502,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
       return html;
     }
     function createColumn(data) {
-      html = "<th>"+data+"</th>";
+      html = "<th name='"+data["name"]+"'>"+data["comment"]+"</th>";
       return html;
     }
     function createColumnBody(data) {
@@ -433,8 +519,8 @@ scratch. This page gets rid of all links and provides the needed markup only.
     for(var i=0;i<columns.length;i++){
       console.log(columns[i])
       $("#tableForm").prepend(createNode(columns[i]))
-      $("#columnNameStart").append(createColumn(columns[i]["comment"]))
-      $("#columnNameEnd").append(createColumn(columns[i]["comment"]))
+      $("#columnNameStart").append(createColumn(columns[i]))
+      //$("#columnNameEnd").append(createColumn(columns[i]))
     }
   }
   //表单提交
@@ -443,19 +529,37 @@ scratch. This page gets rid of all links and provides the needed markup only.
     alert(data)
     $.ajax({
       type: "GET",
-      url:'http://localhost:8080/table',
+      url:'http://localhost:8080/table/'+$("#tableForm").attr("name")+"/0",
       async:false,
       data: data,
       dataType: "json",
       success: function (data) {
         alert(JSON.stringify(data))
         console.log(data)
+        // $('#example2').DataTable({
+        // });
+        // $('#example2').dataTable().fnClearTable()
+        // $('#example2').dataTable().fnDestroy()
+
+        // $('#example2').DataTable({
+        //   "paging": true,
+        //   "lengthChange": false,
+        //   "searching": false,
+        //   "ordering": true,
+        //   "info": true,
+        //   "autoWidth": false,
+        // });
+        $('#example2').dataTable().fnClearTable(); //清空一下table
+        // $('#example2').dataTable().fnDestroy(); //还原初始化了的datatable
+        // $('#example2').dataTable();
         tableResults(data)
+        $('#example2').dataTable({"paging": true}).reload();
       }
     })
   })
   //结果集填充
   function tableResults(data) {
+    $("#columnBody").empty()
     $("#columnBody").append(createColumnBody(data))
   }
   function createColumnBody(data) {
@@ -478,14 +582,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
   }
 
   $(function () {
-    $("#example1").DataTable();
     $('#example2').DataTable({
-      "paging": true,
-      "lengthChange": false,
-      "searching": false,
-      "ordering": true,
-      "info": true,
-      "autoWidth": false,
     });
   });
 </script>
